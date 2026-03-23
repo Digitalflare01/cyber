@@ -9,14 +9,13 @@ export function cn(...inputs) {
 }
 
 const getApiBase = () => {
-  const path = window.location.pathname;
+  let path = window.location.pathname;
+  if (path.endsWith('.html')) path = path.substring(0, path.lastIndexOf('/'));
   if (path.includes('/frontend/dist')) {
-    return path.substring(0, path.indexOf('/frontend/dist')) + '/backend/api/index.php';
+      path = path.substring(0, path.indexOf('/frontend/dist'));
   }
-  if (path.includes('/cyber/')) {
-    return path.substring(0, path.indexOf('/cyber/')) + '/cyber/backend/api/index.php';
-  }
-  return '/backend/api/index.php';
+  if (!path.endsWith('/')) path += '/';
+  return `${path}backend/api/index.php`;
 };
 
 export default function App() {
