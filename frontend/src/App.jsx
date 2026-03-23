@@ -140,7 +140,7 @@ function ScannerModule({ type }) {
     
     try {
       // Assuming PHP API is running on localhost/cyber/backend/api
-      const apiBase = window.location.hostname === 'localhost' ? 'http://localhost/cyber/backend/api' : '/cyber/backend/api';
+      const apiBase = window.location.hostname === 'localhost' ? 'http://localhost/cyber/backend/api/index.php' : '/cyber/backend/api/index.php';
       
       const res = await axios.post(`${apiBase}/scan/start`, {
         type: type,
@@ -277,7 +277,7 @@ function HistoryModule() {
   React.useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const apiBase = window.location.hostname === 'localhost' ? 'http://localhost/cyber/backend/api' : '/cyber/backend/api';
+        const apiBase = window.location.hostname === 'localhost' ? 'http://localhost/cyber/backend/api/index.php' : '/cyber/backend/api/index.php';
         const res = await axios.get(`${apiBase}/history`);
         setHistory(res.data.history || []);
       } catch(e) { console.error('History fetch failed', e); }

@@ -20,8 +20,9 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 // Simple router
 $base_path = '/cyber/backend/api';
+$alt_path = '/cyber/backend/api/index.php';
 
-if (strpos($request, $base_path . '/scan/start') === 0 && $method === 'POST') {
+if ((strpos($request, $base_path . '/scan/start') === 0 || strpos($request, $alt_path . '/scan/start') === 0) && $method === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     
     $type = $data['type'] ?? '';
@@ -89,7 +90,7 @@ if (strpos($request, $base_path . '/scan/start') === 0 && $method === 'POST') {
         http_response_code(500);
         echo json_encode(['error' => 'Server error: ' . $e->getMessage()]);
     }
-} elseif (strpos($request, $base_path . '/scan/results') === 0 && $method === 'GET') {
+} elseif ((strpos($request, $base_path . '/scan/results') === 0 || strpos($request, $alt_path . '/scan/results') === 0) && $method === 'GET') {
     $scan_id = $_GET['id'] ?? 0;
     
     $db = Database::getConnection();
@@ -114,7 +115,7 @@ if (strpos($request, $base_path . '/scan/start') === 0 && $method === 'POST') {
     
     $scan['findings'] = $vulnerabilities;
     echo json_encode($scan);
-} elseif (strpos($request, $base_path . '/history') === 0 && $method === 'GET') {
+} elseif ((strpos($request, $base_path . '/history') === 0 || strpos($request, $alt_path . '/history') === 0) && $method === 'GET') {
     $db = Database::getConnection();
     
     $stmt = $db->query("
