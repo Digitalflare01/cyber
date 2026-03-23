@@ -2,9 +2,9 @@
 // Database Configuration
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'cyber_dast');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'u197294049_cyber-admin');
+define('DB_USER', 'u197294049_cyber_security');
+define('DB_PASS', 'Parayulla@123');
 
 class Database {
     private static $connection = null;
