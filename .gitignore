@@ -1,0 +1,7 @@
+# Ignore frontend dependencies
+frontend/node_modules/
+frontend/dist/
+
+# System files
+.DS_Store
+Thumbs.db
