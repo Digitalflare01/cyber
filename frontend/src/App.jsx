@@ -152,7 +152,7 @@ function ScannerModule({ type }) {
     try {
       const apiBase = getApiBase();
       
-      const res = await axios.post(`${apiBase}/scan/start`, {
+      const res = await axios.post(`${apiBase}?endpoint=/scan/start`, {
         type: type,
         identifier: target,
         name: `${config.title} - ${target}`
@@ -160,7 +160,7 @@ function ScannerModule({ type }) {
       
       if (res.data.scan_id) {
         // Fetch results generated
-        const resData = await axios.get(`${apiBase}/scan/results?id=${res.data.scan_id}`);
+        const resData = await axios.get(`${apiBase}?endpoint=/scan/results&id=${res.data.scan_id}`);
         setResults(resData.data);
       }
     } catch (error) {
@@ -288,7 +288,7 @@ function HistoryModule() {
     const fetchHistory = async () => {
       try {
         const apiBase = getApiBase();
-        const res = await axios.get(`${apiBase}/history`);
+        const res = await axios.get(`${apiBase}?endpoint=/history`);
         setHistory(res.data.history || []);
       } catch(e) { console.error('History fetch failed', e); }
     };

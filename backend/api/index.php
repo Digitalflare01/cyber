@@ -15,7 +15,7 @@ require_once '../engines/NVDClient.php';
 require_once '../engines/MobSFWrapper.php';
 require_once '../engines/ZAPWrapper.php';
 
-$request = $_SERVER['REQUEST_URI'];
+$request = $_GET['endpoint'] ?? $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Flexible router to handle both localhost (/cyber/backend) and Hostinger root (/backend/)
