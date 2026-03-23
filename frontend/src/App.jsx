@@ -9,13 +9,7 @@ export function cn(...inputs) {
 }
 
 const getApiBase = () => {
-  let path = window.location.pathname;
-  if (path.endsWith('.html')) path = path.substring(0, path.lastIndexOf('/'));
-  if (path.includes('/frontend/dist')) {
-      path = path.substring(0, path.indexOf('/frontend/dist'));
-  }
-  if (!path.endsWith('/')) path += '/';
-  return `${path}backend/api/index.php`;
+  return 'api.php';
 };
 
 export default function App() {
