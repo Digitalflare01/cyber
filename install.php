@@ -19,7 +19,7 @@ try {
 
     echo "<h3>Installation Complete!</h3>";
     echo "<p>Please delete this <code>install.php</code> file for security.</p>";
-    echo "<a href='frontend/dist/'>Go to Dashboard</a>";
+    echo "<a href='./index.html'>Go to Dashboard</a>";
 }
 catch (PDOException $e) {
     echo "<p style='color:red;'>Error: " . $e->getMessage() . "</p>";
