@@ -8,6 +8,17 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
+const getApiBase = () => {
+  const path = window.location.pathname;
+  if (path.includes('/frontend/dist')) {
+    return path.substring(0, path.indexOf('/frontend/dist')) + '/backend/api/index.php';
+  }
+  if (path.includes('/cyber/')) {
+    return path.substring(0, path.indexOf('/cyber/')) + '/cyber/backend/api/index.php';
+  }
+  return '/backend/api/index.php';
+};
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('web');
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -139,8 +150,7 @@ function ScannerModule({ type }) {
     setResults(null);
     
     try {
-      // Assuming PHP API is running on localhost/cyber/backend/api
-      const apiBase = window.location.hostname === 'localhost' ? 'http://localhost/cyber/backend/api/index.php' : '/cyber/backend/api/index.php';
+      const apiBase = getApiBase();
       
       const res = await axios.post(`${apiBase}/scan/start`, {
         type: type,
@@ -277,7 +287,7 @@ function HistoryModule() {
   React.useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const apiBase = window.location.hostname === 'localhost' ? 'http://localhost/cyber/backend/api/index.php' : '/cyber/backend/api/index.php';
+        const apiBase = getApiBase();
         const res = await axios.get(`${apiBase}/history`);
         setHistory(res.data.history || []);
       } catch(e) { console.error('History fetch failed', e); }
