@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {
-  background-color: var(--color-brand-black, #0a0a0a);
+  background-color: var(--color-brand-black, #000000);
   color: var(--color-brand-white, #ffffff);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,7 +10,7 @@ body {
 
 ::selection {
   background-color: var(--color-brand-white, #ffffff);
-  color: var(--color-brand-black, #0a0a0a);
+  color: var(--color-brand-black, #000000);
 }
 
 .glass-panel {
@@ -24,7 +24,7 @@ body {
 .btn-primary {
   padding: 0.5rem 1.5rem;
   background-color: var(--color-brand-white, #ffffff);
-  color: var(--color-brand-black, #0a0a0a);
+  color: var(--color-brand-black, #000000);
   font-weight: 500;
   border-radius: 0.375rem;
   transition: all 0.2s;
@@ -59,7 +59,7 @@ body {
 
 .input-field {
   width: 100%;
-  background-color: var(--color-brand-black, #0a0a0a);
+  background-color: var(--color-brand-black, #000000);
   border: 1px solid var(--color-brand-gray, #262626);
   border-radius: 0.375rem;
   padding: 0.5rem 1rem;
@@ -83,7 +83,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
